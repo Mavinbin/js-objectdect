@@ -19,11 +19,7 @@
 			detector;
 
 			window.navigator.mediaDevices.getUserMedia({video: true}).then(function(stream) {
-				try {
-					video.src = compatibility.URL.createObjectURL(stream);
-				} catch (error) {
-					video.src = stream;
-				}
+				video.srcObject = stream
 				compatibility.requestAnimationFrame(play);
 			}).catch (function(err) {
                 alert(err)
