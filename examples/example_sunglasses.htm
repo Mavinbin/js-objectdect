@@ -51,9 +51,7 @@
                             constraints.video.deviceId = videoDevices[videoDevices.length - 1]
                         }
 
-                        navigator.mediaDevices.getUserMedia({
-                            video: true
-                        }).then(function (stream) {
+                        navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
                             video.srcObject = stream
                             compatibility.requestAnimationFrame(play);
                         }).catch(function (err) {
