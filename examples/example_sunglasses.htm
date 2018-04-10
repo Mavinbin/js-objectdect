@@ -12,6 +12,17 @@
         <script src="../js/objectdetect.frontalface.js"></script>
 
         <script>
+            var getSystem = function () {
+                var u = navigator.userAgent
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+
+                if (isAndroid) {
+                    return 'Android'
+                } else {
+                    return 'iOS'
+                }
+            }
             window.onload = function () {
 
                 var smoother = new Smoother([0.9999999, 0.9999999, 0.999, 0.999], [0, 0, 0, 0]),
@@ -34,7 +45,7 @@
                             }
                         })
 
-                        if (ARPhoto.getSystem() === 'Android') {
+                        if (getSystem() === 'Android') {
                             constraints.video.deviceId = videoDevices[0]
                         } else {
                             constraints.video.deviceId = videoDevices[videoDevices.length - 1]
